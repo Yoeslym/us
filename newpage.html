@@ -3,25 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Adjust if needed -->
+    <title>New Day Journal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My New Page</h1>
-    </header>
 
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="newpage.html">New Page</a>
-    </nav>
+    <div class="container">
+        <h1>New Day Journal</h1>
+        <p>Write down your thoughts and set goals for today.</p>
+        
+        <form id="journalForm">
+            <input type="text" id="title" placeholder="Title for the Day" required>
+            <textarea id="entry" rows="5" placeholder="Write your thoughts here..." required></textarea>
+            <button type="submit">Save Entry</button>
+        </form>
 
-    <main>
-        <p>This is my new page on GitHub Pages.</p>
-    </main>
+        <div id="output"></div>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Your Website Name</p>
-    </footer>
+    <script>
+        document.getElementById("journalForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById("title").value;
+            const entry = document.getElementById("entry").value;
+
+            document.getElementById("output").innerHTML = `
+                <h2>${title}</h2>
+                <p>${entry}</p>
+                <p><em>Entry saved successfully!</em></p>
+            `;
+
+            // Optional: Clear input fields
+            document.getElementById("journalForm").reset();
+        });
+    </script>
+
 </body>
 </html>
